@@ -1,4 +1,5 @@
-import {Component} from '@angular/core'
+import {Component,OnInit} from '@angular/core'
+import{EventService} from './shared/event.service'
 
 
 @Component({
@@ -15,8 +16,18 @@ import {Component} from '@angular/core'
     </div>
     `
 })
-export class EventsListComponent{
 
-  
+// We implement Oninit for typescript safety
+export class EventsListComponent implements OnInit{
+   events:any[] 
+  constructor(private eventService : EventService){
+
+
+  }
+
+  ngOnInit(){
+        this.events = this.eventService.getEvents()
+
+  }
  
 }
